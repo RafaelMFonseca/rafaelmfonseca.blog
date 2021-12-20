@@ -2,12 +2,12 @@ name: CI
 on: push
 jobs:
   deploy:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - name: Git checkout
         uses: actions/checkout@v2
 
-    -   name: Setup SSH Keys and known_hosts
+      - name: Setup SSH Keys and known_hosts
         env:
             SSH_AUTH_SOCK: /tmp/ssh_agent.sock
         run: |
@@ -16,13 +16,8 @@ jobs:
             ssh-agent -a $SSH_AUTH_SOCK > /dev/null
             ssh-add - <<< "${{ secrets.SSH_PRIVATE_KEY }}"
 
-    -   name: Some task that fetches dependencies
-        env:
-            SSH_AUTH_SOCK: /tmp/ssh_agent.sock
-        run: ./fetch-deps.sh
-
       - name: Update theme
-        # (Optional)If you have the theme added as submodule, you can pull it and use the most updated version
+        # (Optional) If you have the theme added as submodule, you can pull it and use the most updated version
         run: git submodule update --init --recursive
 
       - name: Setup hugo
