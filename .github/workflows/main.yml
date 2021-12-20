@@ -19,28 +19,24 @@ jobs:
       - name: Git checkout
         uses: actions/checkout@v2
 
-    #   - name: Update theme
-    #     # (Optional) If you have the theme added as submodule, you can pull it and use the most updated version
-    #     run: git submodule update --init --recursive
+      - name: Update theme
+        uses: snickerbockers/submodules-init@v4
 
       - name: Setup hugo
         uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: "0.85.0"
+            hugo-version: "0.85.0"
 
       - name: Build
-        # remove --minify tag if you do not need it
-        # docs: https://gohugo.io/hugo-pipes/minification/
         run: hugo --minify
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
-          personal_token: ${{ secrets.TOKEN }}
-          external_repository: RafaelMFonseca/rafaelmfonseca.github.io
-          publish_dir: ./public
-          #   keep_files: true
-          user_name: RafaelMFonseca
-          user_email: ramofojabuka@gmail.com
-          publish_branch: main
-          #   cname: example.com
+            personal_token: ${{ secrets.TOKEN }}
+            external_repository: RafaelMFonseca/rafaelmfonseca.github.io
+            publish_dir: ./public
+            keep_files: false
+            user_name: RafaelMFonseca
+            user_email: ramofojabuka@gmail.com
+            publish_branch: main
