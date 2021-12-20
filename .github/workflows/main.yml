@@ -3,9 +3,6 @@ on: push
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    defaults:
-        run:
-            shell: bash
     steps:
       - name: Setup SSH Keys and known_hosts
         env:
