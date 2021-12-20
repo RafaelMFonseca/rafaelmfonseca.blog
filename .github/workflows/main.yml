@@ -7,6 +7,20 @@ jobs:
       - name: Git checkout
         uses: actions/checkout@v2
 
+    -   name: Setup SSH Keys and known_hosts
+        env:
+            SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+        run: |
+            mkdir -p ~/.ssh
+            ssh-keyscan github.com >> ~/.ssh/known_hosts
+            ssh-agent -a $SSH_AUTH_SOCK > /dev/null
+            ssh-add - <<< "${{ secrets.SSH_PRIVATE_KEY }}"
+
+    -   name: Some task that fetches dependencies
+        env:
+            SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+        run: ./fetch-deps.sh
+
       - name: Update theme
         # (Optional)If you have the theme added as submodule, you can pull it and use the most updated version
         run: git submodule update --init --recursive
@@ -14,7 +28,7 @@ jobs:
       - name: Setup hugo
         uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: "0.64.0"
+          hugo-version: "0.85.0"
 
       - name: Build
         # remove --minify tag if you do not need it
