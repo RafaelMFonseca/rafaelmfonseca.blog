@@ -7,8 +7,11 @@ jobs:
       - name: Git checkout
         uses: actions/checkout@v2
         with:
+            # repository: <org name>/<repo name>
+            # path: path
             ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
             persist-credentials: true
+            submodules: true
 
     #   - name: Setup SSH Keys and known_hosts
     #     env:
