@@ -28,7 +28,8 @@ jobs:
             personal_token: ${{ secrets.TOKEN }}
             external_repository: RafaelMFonseca/rafaelmfonseca.github.io
             publish_dir: ./public
-            keep_files: true
+            keep_files: false
             user_name: RafaelMFonseca
             user_email: ramofojabuka@gmail.com
             publish_branch: main
+            force_orphan: true
