@@ -1,5 +1,5 @@
 ---
-title: "Criando um website em Hugo com GitHub Pages e GitHub Actions."
+title: "Criando um website com Hugo no GitHub Pages e GitHub Actions."
 date: 2021-12-20T21:30:50-03:00
 comments: true
 tags:
@@ -26,17 +26,18 @@ Aparentemente, no ambiente do <a href="https://go.dev/">Go Language</a> existe u
 - Você pode baixar o GoLang direto do site: https://go.dev/
 - Instalar o `Hugo` é um pouco mais complicado porque seu executável precisa estar em uma pasta definida nas suas variáveis de ambiente, então simplesmente joguei na pasta do GoLang:
 
-![](2021-12-21-00-55-59.png)
+![Go](2021-12-21-00-55-59.png)
 
 Verifique se está tudo ok:
 
-![](2021-12-21-00-58-57.png)
+![Hyper Command Line](2021-12-21-00-58-57.png)
 
 ## 2° Passo: Criação dos repositórios
 
 Dividi o projeto em dois repositórios no GitHub: o back-end e o front-end.
 
-Back-end: `RafaelMFonseca/rafaelmfonseca.blog` <br>
+Back-end: `RafaelMFonseca/rafaelmfonseca.blog`
+
 Front-end: `RafaelMFonseca/rafaelmfonseca.github.io`
 
 
@@ -51,7 +52,7 @@ $ hugo server
 $ git submodule add -b main git@github.com:RafaelMFonseca/rafaelmfonseca.github.io public
 ```
 
-![](2021-12-21-01-16-13.png)
+![RafaelMFonseca/rafaelmfonseca.blog](2021-12-21-01-16-13.png)
 
 Observe que adicionei dois submódulos do git, o primeiro sendo o tema principal: `nanxiaobei/hugo-paper` (pasta themes), e segundo o módulo onde os arquivos compilados serão jogados: `RafaelMFonseca/rafaelmfonseca.github.io` (pasta public).
 
@@ -134,11 +135,11 @@ Note que no YAML estamos utilizando duas variáveis: SSH_PRIVATE_KEY e TOKEN.
 
 O TOKEN é gerado pelo link: https://github.com/settings/tokens/new
 
-![](2021-12-21-01-20-45.png)
+![Access token](2021-12-21-01-20-45.png)
 
 E para declarar essas variáveis adicionamos em: https://github.com/nomeusuario/seurepositorio/settings/secrets/actions
 
-![](2021-12-21-01-22-17.png)
+![Actions secret](2021-12-21-01-22-17.png)
 
 O SSH_PRIVATE_KEY é sua chave SSH gerada para o GitHub.
 
