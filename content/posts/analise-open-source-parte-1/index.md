@@ -233,3 +233,11 @@ public class DbContext :
     }
 }
 ```
+
+## Considerações finais
+- Sempre referenciar interfaces ao invés de tipos concretos.
+- Utilizar novas funcionalidades da linguagem para facilitar leitura e manter o código sempre atualizado.
+- Escrever classes com apenas uma responsabilidade. 
+- Evitar métodos grandes e com mais de 10 linhas.
+> “Large methods are not nice to read and understand. They can also lead to very hard-to-find bugs. Another problem with large methods is they can lose sight of their original intent. It's even worse when you come across large methods that have sections separated by comments and code wrapped in regions.” - Jason Alls
+- Ah! Reconheci o uso de Fluent interface em vários pontos da biblioteca, e utilizar esse design pattern não inflige a lei de demeter (Ex: `src\EFCore\ModelBuilder.cs`).
