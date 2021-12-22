@@ -71,9 +71,9 @@ public class DbContext :
 - Propriedades são declaradas com tipos estáticos como interfaces ou classes abstrata e futuramente são atribuídas com classes concretas que implementam essas interfaces ou herdam de classes abstratas.
 > “An abstraction should not depend upon details, but details should depend upon abstractions. When you declare variables, you should always use static types such as an interface or abstract class. Concrete classes that implement the interface or inherit from the abstract class can then be assigned to the variable.” - Jason Alls
 - Variáveis privadas começa com o prefixo "_", seguindo as <a href="https://docs.microsoft.com/en-us/dotnet/csharp/fundamentals/coding-style/coding-conventions">convenções de código da Microsoft</a>.
-- No construtor foi utilizado o método `Check.NotNull()` para verificar se o argumento `options` não é nulo, sem ele a biblioteca não funcionaria. Em primeiro momento, pensei que a classe `Check` era de terceiros, mas não, eles mesmos criaram essa classe estática que faz a verificação de vários valores.
 - `_options` é marcado como `readonly` por ser atribuido apenas no construtor.
 - Alguns métodos `private` não contém comentários, por quê?
+- No construtor foi utilizado o método `Check.NotNull()` para verificar se o argumento `options` não é nulo, sem ele a biblioteca não funcionaria. Em primeiro momento, pensei que a classe `Check` era de terceiros, mas não, eles mesmos criaram essa classe estática que faz a verificação de vários valores.
 
 ## Check.cs:
 
@@ -123,7 +123,7 @@ public class SampleContext : DbContext
 
 DbSetFinder, como o nome diz, é responsável por procurar propriedadades `DbSet<TEntity>` em classes que herdam de `DbContext.cs`.
 
-Pra isso, o pessoal do EFCore criou a interface `IDbSetFinder` e a classe `DbSetFinder` que implementa essa interface.
+Pra isso, o pessoal do EFCore criou a interface `IDbSetFinder` e a classe `DbSetFinder` implementa essa interface.
 
 `src/EFCore/Infrastructure/IDbSetFinder.cs`
 ```csharp
