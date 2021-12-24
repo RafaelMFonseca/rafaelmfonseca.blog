@@ -13,7 +13,7 @@ tags:
 Hoje é dia de estudar o projeto <a href="https://github.com/FluentValidation/FluentValidation">FluentValidation/FluentValidation</a>, uma biblioteca simples se comparada com o EFCore, mas acredito que a vamos conseguir extrair alguns padrões interessantes com seu código.
 
 ## AbstractValidator.cs
-`AbstractValidator` é a classe abstrata principal que declara as validações de um determinado modal.
+`AbstractValidator` é a classe abstrata principal que declara as validações de um determinado model/entity.
 
 `src/FluentValidation/AbstractValidator.cs`
 ```csharp
