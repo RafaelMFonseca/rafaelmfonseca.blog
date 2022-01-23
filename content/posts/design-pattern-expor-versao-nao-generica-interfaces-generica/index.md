@@ -1,5 +1,5 @@
 ---
-title: "Pattern: Expor versão não genérica de interfaces genéricas"
+title: "Design Pattern: Expor versão não genérica de interfaces genéricas"
 date: 2021-12-24T01:52:00-00:00
 comments: true
 tags:
