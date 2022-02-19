@@ -1,8 +1,49 @@
 baseURL = 'https://rafaelmfonseca.github.io/'
 languageCode = 'en-us'
+defaultContentLanguage = 'en'
 title = 'Rafael Moreira Fonseca'
-theme = 'paper'
+theme = 'hermit'
 disqusShortname = 'rafaelmfonseca'
+pygmentsCodefences  = true
+pygmentsUseClasses  = true
+rssLimit = 10
+copyright = "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License."
+enableEmoji = true
+
+[author]
+    name = "Rafael Moreira Fonseca"
+
+[blackfriday]
+
+[taxonomies]
+
+[params]
+    dateform        = "Jan 2, 2006"
+    dateformShort   = "Jan 2"
+    dateformNum     = "02-01-2006"
+    dateformNumTime = "02-01-2006 15:04 -0700"
+    themeColor = "#494f5c"
+
+    homeSubtitle = ""
+    footerCopyright = '&#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>'
+    justifyContent = false
+    relatedPosts = false
+    code_copy_button = true
+
+    [[params.social]]
+        name = "github"
+        url = "https://github.com/RafaelMFonseca"
+
+    [[params.social]]
+        name = "linkedin"
+        url = "https://www.linkedin.com/in/rafael-moreira-fonseca/"
+
+[menu]
+    [[menu.main]]
+        name = "Posts"
+        url = "posts/"
+        weight = 10
+
 [markup]
     [markup.goldmark]
         [markup.goldmark.renderer]

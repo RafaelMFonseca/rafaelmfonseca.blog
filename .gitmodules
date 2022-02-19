@@ -5,3 +5,6 @@
 	path = public
 	url = git@github.com:RafaelMFonseca/rafaelmfonseca.github.io.git
 	branch = main
+[submodule "themes/hermit"]
+	path = themes/hermit
+	url = https://github.com/Track3/hermit.git
