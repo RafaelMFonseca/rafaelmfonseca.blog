@@ -29,6 +29,7 @@ enableEmoji = true
     justifyContent = false
     relatedPosts = false
     code_copy_button = true
+    customCSS = ["css/disqusfix.css"]
 
     [[params.social]]
         name = "github"
