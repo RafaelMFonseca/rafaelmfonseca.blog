@@ -2,13 +2,14 @@
 title: "Conceitos da Programação Orientada a Objetos"
 date: 2022-03-06T12:38:00-00:00
 comments: true
+draft: true
 tags:
   - C#
   - SOLID
   - OOP
 ---
 
-# Tabela de contúdo
+# Tabela de conteúdo
 1. [Single Responsibility Principle](single-responsibility-principle)
 2. [Open-Closed Principle](open-closed-principle)
 3. [Liskov Substitution Principle](liskov-substitution-principle)
