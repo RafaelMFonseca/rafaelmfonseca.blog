@@ -2,6 +2,7 @@
 title: "Análise Open Source: Tratamento de exceções em .NET"
 date: 2022-03-07T19:18:00-00:00
 comments: true
+draft: true
 tags:
   - C#
 ---
@@ -48,3 +49,7 @@ A regra é, a classe implementa `IDisposable`? então utilize a instrução `usi
 - - Se você utilizar `Environment.FailFast()`.
 - - Se o hardware ficar inutilizável.
 - - Se ocorrer uma falha de energia.
+
+> "Use exception handling if the event doesn't occur very often." <br>
+> "Check for error conditions in code if the event happens routinely and could be considered part of normal execution." <br>
+
