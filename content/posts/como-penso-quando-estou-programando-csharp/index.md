@@ -29,3 +29,7 @@ if (impl == null) // Como funciona? 'ThirdPartyImplem' compara valores ou só a 
     Console.WriteLine("Preciso verificar a documentação!");
 }
 ```
+
+## Nomear métodos corretamente
+---
+> Se o método retornar uma `Task`, sempre nomeie-os com o sufíxo `Async`.
