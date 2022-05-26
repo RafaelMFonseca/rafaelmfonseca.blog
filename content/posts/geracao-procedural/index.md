@@ -1,7 +1,6 @@
 ---
 title: ""
 date: 2022-05-25T12:00:00-00:00
-draft: true
 comments: true
 private: true
 ---
