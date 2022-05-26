@@ -2,6 +2,7 @@
 title: "Geração procedural em jogos digitais"
 date: 2022-05-25T12:00:00-00:00
 comments: true
+draft: true
 private: true
 ---
 
