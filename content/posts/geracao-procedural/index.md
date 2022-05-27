@@ -1,21 +1,22 @@
 ---
-title: "Geração procedural em jogos digitais"
+title: "Você conhece a técnica de geração procedural em jogos digitais?"
 date: 2022-05-25T12:00:00-00:00
 comments: true
+draft: true
 ---
 
 A geração procedural é um assunto que vem se popularizando nos últimos anos entre os desenvolvedores de jogos indies. <br>
-A utilização de algoritmos procedurais para geração de leveis e terrenos de jogos é adotado por programadores que não desejam limitar o conteúdo de seus games, abrindo portas para criar uma quantidade infinita de recursos. <br>
-Hoje, vamos discurtir as principais vantagens e desvantagens de usar esse tipo de técnica, e saber quando a utilização desses algorítmos pode se tornar favorável para o seu projeto.
+A utilização dessa técnica para geração de leveis e terrenos de jogos é adotado por programadores que não desejam limitar o conteúdo de seus games, abrindo portas para criar uma quantidade infinita de recursos. Hoje, vamos discurtir as principais vantagens e desvantagens de usar esse tipo de técnica, e saber quando a utilização desses algorítmos pode se tornar favorável para o seu projeto.
 
 ## Afinal, o que são esses algoritmos procedurais?
-Essa abordagem é a junção de vários algoritmos e/ou dados aleatórios que são encadeados para gerar valores com formatos conhecidos e úteis. <br>
-A maneira mais fácil de demonstrar isso tudo é com exemplos, um dos cálculos matemáticos mais famosos é o **Perlin Noise criado por Ken Perlin**. Ao executar esse cálculo, o seu resultado pode ser usado para criar imagens parecidas com a abaixo:
+
+É uma abordagem de junção de vários algoritmos e/ou dados aleatórios que são encadeados para gerar valores com formatos conhecidos e úteis. Um dos exemplos mais famosos é o cálculo do matemático Ken Perlin, o Perlin Noise, onde o seu resultado pode ser usado para criar imagens parecidas com essa:
 
 ![](2022-05-25-15-39-24.png)
+<center><i>Imagem gerado com perlin noise.</i></center>
+<br><br>
 
-É importante observar que a imagem é composta por variações de apenas duas cores: preto e branco, **sendo a cor preta representado pelo valor 0.0f e a branca pelo valor 1.0f**. <br>
-No game engine Unity, cada pixel pode ser gerado utilizando o método estático `Mathf.PerlinNoise(x, y)`, mas para isso você também deve informar as coordenadas x e y.
+É importante observar que a imagem é composta por variações de apenas duas cores: preto e branco, **sendo a cor preta representado pelo valor 0.0f e a branca pelo valor 1.0f**. No game engine Unity, cada pixel pode ser gerado utilizando o método estático `Mathf.PerlinNoise(x, y)`, mas para isso você também deve informar as coordenadas x e y.
 
 ```csharp
 using UnityEngine;
@@ -34,15 +35,13 @@ Imaginando o cenário de que o valor **1.0f** pode ser o ponto mais alto de uma 
 
 ## Em busca do realismo utilizando a combinações de algoritmos
 
-Só o Perlin Noise não é suficiente, para tornar o cenário agradável aos olhos dos jogadores, a combinações de **noises** se torna crucial na criação de terrenos. <br>
-Na imagem abaixo utilizei os algoritmos: **Perlin Noise**, **Erosion**, **Terrace** e **Shore Line**.
+Só o Perlin Noise não é suficiente, para tornar o cenário agradável aos olhos dos jogadores, a combinações de **noises** se torna crucial na criação de terrenos. Na imagem abaixo utilizei os algoritmos: **Perlin Noise**, **Erosion**, **Terrace** e **Shore Line**.
 
 ![](2022-05-25-16-22-14.png)
 
-## Performance
+## Mas todas essas combinações de algoritmos impactam na performance?
 
-A geração procedural exige um alto processamento da CPU para realizar os cálculos em tempo de execução, principalmente se o terreno for gerado automaticamente em volta do Player. <br>
-Utilizando as técnicas de otimizações corretas, como a divisão do terrenos em chunks (dividir um grande terreno em partes) e a aplicação de object pooling (reutilização de objetos descartados), é possível alcançar resultados em que o processamento fique imperceptível para o usuário. <br>
+A geração procedural exige um alto processamento da CPU para realizar os cálculos em tempo de execução, principalmente se o terreno for gerado automaticamente em volta do Player. Utilizando as técnicas de otimizações corretas, como a divisão do terrenos em chunks (dividir um grande terreno em partes) e a aplicação de object pooling (reutilização de objetos descartados), é possível alcançar resultados em que o processamento fique imperceptível para o usuário. <br>
 
 ![](2022-05-26-10-50-26.png)
 
@@ -56,7 +55,7 @@ Essa ferramenta pode auxiliar e gerar variações infinitas de texturas através
 
 ## Nem tudo é perfeito
 
-Infelizmente, com o tempo, você pode notar padrões nas soluções procedurais, as repetições ficam claras e o ambiente pode não ser tão diverso. Para evitar que o jogador note demais essas estruturas repetitivas, cria-se uma necessidade de usar a combinação de ambientes feitos à mão com ferramentas que utilizam algoritmos procedurais.
+Infelizmente, com o tempo, você pode notar padrões nas soluções procedurais, as repetições ficam claras e o ambiente pode não ser tão diverso. Para evitar que o jogador note demais essas estruturas repetitivas, cria-se uma necessidade de usar combinações de ambientes feitos à mão com ferramentas que utilizam algoritmos procedurais.
 
 ![](2022-05-26-14-31-02.png)
 
