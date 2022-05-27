@@ -10,11 +10,11 @@ Hoje, vamos discurtir as principais vantagens e desvantagens de usar esse tipo d
 
 ## Afinal, o que são esses algoritmos procedurais?
 Essa abordagem é a junção de vários algoritmos e/ou dados aleatórios que são encadeados para gerar valores com formatos conhecidos e úteis. <br>
-A maneira mais fácil de demonstrar isso tudo é com exemplos, um dos cálculos matemáticos mais famosos é o **Perlin Noise** criado por Ken Perlin. Ao executar esse cálculo, o seu resultado pode ser usado para criar imagens parecidas com a abaixo:
+A maneira mais fácil de demonstrar isso tudo é com exemplos, um dos cálculos matemáticos mais famosos é o **Perlin Noise criado por Ken Perlin**. Ao executar esse cálculo, o seu resultado pode ser usado para criar imagens parecidas com a abaixo:
 
 ![](2022-05-25-15-39-24.png)
 
-É importante observar que a imagem é composta por variações de apenas duas cores: preto e branco, sendo a cor preta representado pelo valor **0.0f** e a branca pelo valor **1.0f**. <br>
+É importante observar que a imagem é composta por variações de apenas duas cores: preto e branco, **sendo a cor preta representado pelo valor 0.0f e a branca pelo valor 1.0f**. <br>
 No game engine Unity, cada pixel pode ser gerado utilizando o método estático `Mathf.PerlinNoise(x, y)`, mas para isso você também deve informar as coordenadas x e y.
 
 ```csharp
@@ -28,11 +28,11 @@ float noise = Mathf.PerlinNoise(posX, posY);
 Debug.Log("Noise: " + noise);
 ```
 
-Imaginando o cenário de que o valor **1.0f** pode ser o ponto mais alto de uma montanha, o **Perlin Noise** possibilita a geração de terrenos proceduralmente:
+Imaginando o cenário de que o valor **1.0f** pode ser o ponto mais alto de uma montanha, o **Perlin Noise possibilita a geração de terrenos proceduralmente**:
 
 ![](2022-05-25-16-11-38.png)
 
-## Em busca do realismo utilizando a combinações de algoritmos.
+## Em busca do realismo utilizando a combinações de algoritmos
 
 Só o Perlin Noise não é suficiente, para tornar o cenário agradável aos olhos dos jogadores, a combinações de **noises** se torna crucial na criação de terrenos. <br>
 Na imagem abaixo utilizei os algoritmos: **Perlin Noise**, **Erosion**, **Terrace** e **Shore Line**.
@@ -42,7 +42,7 @@ Na imagem abaixo utilizei os algoritmos: **Perlin Noise**, **Erosion**, **Terrac
 ## Performance
 
 A geração procedural exige um alto processamento da CPU para realizar os cálculos em tempo de execução, principalmente se o terreno for gerado automaticamente em volta do Player. <br>
-Utilizando as técnicas de otimizações corretas, como a divisão do terrenos em chunks e object pooling, é possível alcançar resultados em que o processamento fique imperceptível para o usuário. <br>
+Utilizando as técnicas de otimizações corretas, como a divisão do terrenos em chunks (dividir um grande terreno em partes) e a aplicação de object pooling (reutilização de objetos descartados), é possível alcançar resultados em que o processamento fique imperceptível para o usuário. <br>
 
 ![](2022-05-26-10-50-26.png)
 
@@ -60,6 +60,16 @@ Infelizmente, com o tempo, você pode notar padrões nas soluções procedurais,
 
 ![](2022-05-26-14-31-02.png)
 
+### Vantagens
+* Permite criar conteúdo dinamicamente.
+* É possível a geração de terrenos gigantes e recursos infinitos.
+* Alta reusabilidade, alterar apenas alguns valores e parâmetros pode gerar um novo conteúdo.
+
+### Desvantagens
+* O conteúdo gerado proceduralmente pode parecer repetitivo e entediante.
+* A geração depende da potência do hardware.
+* Exige mais conhecimento de programação.
+
 ## Conclusão
 
-Por fim, esse artigo faz reflexão de que as ferramentas e algoritmos procedurais são técnicas incríveis na programação de jogos, isso ajuda automatizar a criação de certos dados. Vários jogos gera ambientes ou criaturas proceduralmente durante o produto final, e vale você avaliar se o seu projeto se encaixa nessa categoria.
+Por fim, esse artigo faz reflexão de que as ferramentas e algoritmos procedurais são técnicas incríveis na programação de jogos, isso ajuda automatizar a criação de certos dados. Vários jogos gera ambientes ou criaturas proceduralmente durante o produto final, mas vale você avaliar se o seu projeto se encaixa nessa categoria.
