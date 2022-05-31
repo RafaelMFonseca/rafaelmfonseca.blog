@@ -8,7 +8,6 @@ A geração procedural é um assunto que vem se popularizando nos últimos anos 
 A utilização dessa técnica para geração de leveis e terrenos de jogos é adotado por programadores que não desejam limitar o conteúdo de seus games, abrindo portas para criar uma quantidade infinita de recursos. Hoje, vamos discurtir as principais vantagens e desvantagens de usar esse tipo de técnica, e saber quando a utilização desses algorítmos pode se tornar favorável para o seu projeto.
 
 ## Afinal, o que são esses algoritmos procedurais?
-
 É uma abordagem de junção de vários algoritmos e/ou dados aleatórios que são encadeados para gerar valores com formatos conhecidos e úteis. Um dos exemplos mais famosos é o cálculo do matemático Ken Perlin, o Perlin Noise, onde o seu resultado pode ser usado para criar imagens parecidas com essa:
 
 ![](2022-05-27-12-14-17.png)
@@ -65,21 +64,18 @@ Imaginando o cenário de que o valor **1.0f** pode ser o ponto mais alto de uma 
 <center><i style="font-size: 12px;">[Terreno configurado a partir do valores gerado pelo perlin noise.]</i></center>
 
 ## Em busca do realismo utilizando a combinações de algoritmos
-
 Só o Perlin Noise não é suficiente, para tornar o cenário agradável aos olhos dos jogadores, a combinações de **noises** se torna crucial na criação de terrenos. Na imagem abaixo utilizei os algoritmos: **Perlin Noise**, **Erosion**, **Terrace** e **Shore Line**.
 
 ![](2022-05-25-16-22-14.png)
 <center><i style="font-size: 12px;">[Terreno mais detalhado usando combinações de algoritmos.]</i></center>
 
 ## Mas todas essas combinações de algoritmos impactam na performance?
-
 A geração procedural exige um alto processamento da CPU para realizar os cálculos em tempo de execução, principalmente se o terreno for gerado automaticamente em volta do Player. Utilizando as técnicas de otimizações corretas, como a divisão do terrenos em chunks (dividir um grande terreno em partes) e a aplicação de object pooling (reutilização de objetos descartados), é possível alcançar resultados em que o processamento fique imperceptível para o usuário. <br>
 
 ![](2022-05-26-10-50-26.png)
 <center><i style="font-size: 12px;">[Terreno dividido em 9 partes (chunks).]</i></center>
 
 ## Geração procedural está presente em todo lugar
-
 Os setores de efeitos visuais e videogames usam a geração procedural para a criação de materiais PBR e texturas 3D. <br>
 Hoje, a Adobe lidera a indústria de criação de materiais com seu software premiado: Substance Designer. <br>
 Essa ferramenta pode auxiliar e gerar variações infinitas de texturas através de nós interligados.
@@ -88,7 +84,6 @@ Essa ferramenta pode auxiliar e gerar variações infinitas de texturas através
 <center><i style="font-size: 12px;">[Textura de couro renderizado pelo Substance Designer]</i></center>
 
 ## Nem tudo é perfeito
-
 Infelizmente, com o tempo, você pode notar padrões nas soluções procedurais, as repetições ficam claras e o ambiente pode não ser tão diverso. Para evitar que o jogador note demais essas estruturas repetitivas, cria-se uma necessidade de usar combinações de ambientes feitos à mão com ferramentas que utilizam algoritmos procedurais.
 
 ![](2022-05-26-14-31-02.png)
@@ -105,5 +100,4 @@ Infelizmente, com o tempo, você pode notar padrões nas soluções procedurais,
 * Exige mais conhecimento de programação.
 
 ## Conclusão
-
 Por fim, esse artigo faz reflexão de que as ferramentas e algoritmos procedurais são técnicas incríveis na programação de jogos, isso ajuda automatizar a criação de certos dados. Vários jogos geram ambientes ou criaturas proceduralmente durante o produto final, mas vale você avaliar se o seu projeto se encaixa nessa categoria.
