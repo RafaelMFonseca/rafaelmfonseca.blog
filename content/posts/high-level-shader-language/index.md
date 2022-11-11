@@ -40,10 +40,10 @@ float seu_array[size_array]; // ERRO!
 ```
 
 Links úteis:
-- https://learn.microsoft.com/pt-br/windows/win32/direct3dhlsl/dx-graphics-hlsl-variable-syntax?redirectedfrom=MSDN
+- https://stackoverflow.com/a/40957587
 - https://learn.microsoft.com/en-us/windows/win32/direct3dhlsl/dx-graphics-hlsl-variable-syntax?redirectedfrom=MSDN
 
-# Por preocaução, sempre inicializar arrays se lidas posteriormente...
+# Por precaução, sempre inicializar arrays se lidas posteriormente...
 
 ![](2022-11-11-01-45-06.png)
 
