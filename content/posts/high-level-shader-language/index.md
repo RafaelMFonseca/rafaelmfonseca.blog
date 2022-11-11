@@ -13,16 +13,23 @@ Não vou entrar em detalhes sobre a linguagem [HLSL](https://learn.microsoft.com
 # "0 é int, 0.0 é float"
 
 Básicão né? mas fiquei 10 minutos tentando entender porque meus cálculos não funcionavam.<br>
-**A GPU não realiza uma conversão implícita em uma subtração com float e inteiro.**
 
 ```c
 int num = 5;
 
-float result = 1.0 / (num - 1.0); // resultado = 0.25 (float)
-float result = float(1) / (num - float(1)); // resultado = 0.25 (float)
-float result = (float) 1 / (num - (float) 1); // resultado = 0.25 (float)
+float result = 1.0 / (num - 1.0); // resultado = 0.25
+float result = float(1) / (num - float(1)); // resultado = 0.25
+float result = (float) 1 / (num - (float) 1); // resultado = 0.25
 
-float result = 1 / (num - 1); // resultado = 0 (float)
+float result = 1 / (num - 1); // resultado = 0
+
+int numInteger = 5;
+
+float result = numInteger / 2; // resultado = 2
+float result = numInteger / 2.0; // resultado = 2.5
+float result = numInteger / float(2); // resultado = 2.5
+float result = numInteger / float(2); // resultado = 2.5
+float result = numInteger / (float) 2; // resultado = 2.5
 ```
 
 # Arrays não podem ter dimensões definidas através de variáveis.
