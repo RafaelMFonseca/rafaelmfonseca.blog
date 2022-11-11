@@ -20,7 +20,6 @@ int num = 5;
 float result = 1.0 / (num - 1.0); // resultado = 0.25
 float result = float(1) / (num - float(1)); // resultado = 0.25
 float result = (float) 1 / (num - (float) 1); // resultado = 0.25
-
 float result = 1 / (num - 1); // resultado = 0
 
 int numInteger = 5;
