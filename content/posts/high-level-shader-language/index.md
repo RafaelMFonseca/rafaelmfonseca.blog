@@ -79,3 +79,7 @@ RWStructuredBuffer<int> data;
 	InterlockedAdd(data[0], 1); // OK, esta linha funciona!
 }
 ```
+
+Links úteis:
+- https://stackoverflow.com/a/59365062
+- https://stackoverflow.com/a/45527238
