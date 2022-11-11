@@ -89,3 +89,26 @@ RWStructuredBuffer<int> data;
 Links úteis:
 - https://stackoverflow.com/a/59365062
 - https://stackoverflow.com/a/45527238
+
+# Sempre declarar variáveis de loop com nomes diferentes:
+
+![](2022-11-11-20-39-24.png)
+
+```c
+RWStructuredBuffer<int> data;
+
+#pragma kernel ComputeData
+[numthreads(256, 1, 1)] void ComputeData(int index: SV_DispatchThreadID) {
+	for (int t = 0; t < 10; t++) {
+	}
+
+	for (int t = 0; t < 10; t++) { // Troque "t" por outra letra!
+	}
+}
+```
+
+# Resultado de funções
+
+## [genType round(genType a);](https://developer.download.nvidia.com/cg/round.html)
+
+![](2022-11-11-20-47-01.png)
