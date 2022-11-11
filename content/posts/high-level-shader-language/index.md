@@ -63,3 +63,19 @@ RWStructuredBuffer<float> data;
     }
 }
 ```
+
+# Utilizar operações atômicas pra corrigir race condicions.
+
+O título diz tudo, race condicion acontece quando uma ou mais threads podem acessar um dado compartilhado e tentam alterar o seu valor ao mesmo tempo.
+
+![](2022-11-11-01-55-02.png)
+
+```c
+RWStructuredBuffer<int> data;
+
+#pragma kernel ComputeData
+[numthreads(256, 1, 1)] void ComputeData(int index: SV_DispatchThreadID) {
+	data[0] = data[0] + 1; // ERRO DE RACE CONDITION!
+	InterlockedAdd(data[0], 1); // OK, esta linha funciona!
+}
+```
