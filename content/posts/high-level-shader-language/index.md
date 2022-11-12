@@ -10,6 +10,13 @@ tags:
 
 Não vou entrar em detalhes sobre a linguagem [HLSL](https://learn.microsoft.com/en-us/windows/win32/direct3dhlsl/dx-graphics-hlsl) (High-level shader language), talvez outro dia eu escreva mais sobre ele aqui, mas vou citar abaixo alguns pontos importante que (provavelmente) vou esquecer quando criar um arquivo *.compute lá em 2050.
 
+# Desabilite o cache de processamento de shaders.
+
+O Unity apontava vários erros que eu já tinha corrigido no Shader, mas o compilador não atualizava.<br>
+**Desabilitar o checkbox abaixo resolveu:**
+
+![](2022-11-12-18-50-35.png)
+
 # "0 é int, 0.0 é float"
 
 Básicão né? mas fiquei 10 minutos tentando entender porque meus cálculos não funcionavam.<br>
