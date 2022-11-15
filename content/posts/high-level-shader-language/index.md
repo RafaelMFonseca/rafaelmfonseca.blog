@@ -17,6 +17,9 @@ O Unity apontava vários erros que eu já tinha corrigido no Shader, mas o compi
 
 ![](2022-11-12-18-50-35.png)
 
+Links úteis:
+- https://forum.unity.com/threads/compute-shader-undeclared-identifier-for-functions-and-variables-defined-in-include-files.1288592/#post-8167322
+
 # "0 é int, 0.0 é float"
 
 Básicão né? mas fiquei 10 minutos tentando entender porque meus cálculos não funcionavam.<br>
