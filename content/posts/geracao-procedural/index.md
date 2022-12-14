@@ -2,7 +2,6 @@
 title: "Você conhece a técnica de geração procedural em jogos digitais?"
 date: 2022-05-25T12:00:00-00:00
 comments: true
-draft: true
 ---
 
 A geração procedural é um assunto que vem se popularizando nos últimos anos entre os desenvolvedores de jogos indies. <br>
