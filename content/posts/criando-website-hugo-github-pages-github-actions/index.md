@@ -78,7 +78,7 @@ $ hugo
 ```
 Para iniciar o servidor de dev:
 ```
-$ hugo server
+$ hugo serve
 ```
 
 ## 5° Passo: Build automática pelo GitHub Actions
