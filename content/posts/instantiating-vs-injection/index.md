@@ -2,6 +2,7 @@
 title: "Quando usar Dependency injection?"
 date: 2023-01-18T18:00:00-00:00
 comments: true
+craft: true
 tags:
   - C#
   - Patterns
