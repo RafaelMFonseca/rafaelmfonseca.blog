@@ -37,7 +37,7 @@ Cada fluxo merece o seu próprio artigo, por enquanto, vamos comentar e tentar e
 
 O fluxo Authorization Code permite conceder dados de outro serviço sem que o usuário preencha suas credenciais no próprio client (seja ele um frontend, web app ou mobile). Para entender todo o processo que o Authorization Code faz, vamos olhar como um site poderia conectar em sua conta da Microsoft.
 
-1) Solicitação de acesso: no seu frontend, o usuário clica em um botão pra se conectar com a Microsoft:
+1) Solicitação de acesso: no seu frontend, o usuário clica em um botão pra se conectar com a Microsoft (endpoint "/authorize"):
 
 <center><img src="2023-08-09-23-00-54.png" width="300" /></center>
 
@@ -78,7 +78,7 @@ O fluxo Authorization Code permite conceder dados de outro serviço sem que o us
 
 <center><img src="2023-08-09-23-03-35.png" width="300" /></center>
 
-3) Permissões: após preencher as credenciais, os dados que o Client está solicitando vai aparecer em tela para que o usuário aprove ou negue.
+3) Permissões: após preencher as credenciais, será exibido em tela as permissões que o frontend está solicitando, o usuário pode aprovar ou negar conceder esses dados.
 
 <center><img src="2023-08-09-20-51-14.png" width="300" /></center>
 
