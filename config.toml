@@ -1,4 +1,4 @@
-baseURL = 'https://rafaelmfonseca.github.io/'
+baseURL = 'https://rafaelmfonseca.github.io/blog/'
 languageCode = 'en-us'
 defaultContentLanguage = 'en'
 title = 'Rafael Moreira Fonseca'
