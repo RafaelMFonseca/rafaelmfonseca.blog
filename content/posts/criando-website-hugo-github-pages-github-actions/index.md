@@ -1,5 +1,5 @@
 ---
-title: "Criando um website com Hugo no GitHub Pages e GitHub Actions."
+title: "Website Hugo no GitHub Pages com GitHub Actions"
 date: 2021-12-20T21:30:50-03:00
 comments: true
 tags:
@@ -10,137 +10,133 @@ tags:
   - Blog
   - Markdown
 ---
-<br><br>
-Hoje decidi criar um blog, mais uma de minhas loucuras (quem diria?).
 
-Eu resolvo diferentes problemas relacionados à programação no meu dia-a-dia, então decidi criar este blog para expor as dificuldades que tive para chegar em um resultado positivo para esses obstáculos.
+# O que é a ferramenta "Hugo"?
 
-Gostaria de mencionar que escrever nunca foi meu forte, eu passo o meu dia apenas digitando palavras-chaves (ou quem sabe um JSDoc?), mas vou tentar escrever os posts de uma maneira fácil para que todos entendam.
+Hugo é um gerador de website estáticos escrito em [Golang](https://go.dev/), otimizado para ser rápido e fácil de se configurar. Hugo busca o conteúdo e templates do seu repositório para renderizá-los em um site totalmente estático (HTML/CSS/JS). Com ele você consegue criar posts e páginas em formato Markdown e em conjunto com o GitHub conseguimos hospedar nosso website de forma gratuita e automática sem muita preocupação.
 
-## Enfim, vamos ao que importa, como criei esse blog?
+## Sobre o GitHub Pages
 
-Aparentemente, no ambiente do <a href="https://go.dev/">Go Language</a> existe um framework muito famoso chamado `Hugo` (nome de gente? vou criar o `Rafael`), e ele é bastante utilizado para criação de websites estáticos.
+GitHub Pages é um serviço de hospedagem do [GitHub](https://github.com/) para sites estáticos que utiliza arquivos de um ou mais repositórios do GitHub para realizar a publicacão do website. Ao publicar com o Pages, o GitHub fornece o endereço `http(s)://<nome_usuario>.github.io/<nome_repositorio>` para que você consiga acessar o site pela internet.
 
-## 1° Passo: Instalar o GoLang e Hugo Framework
+## Pré-requisitos
 
-- Você pode baixar o GoLang direto do site: https://go.dev/
-- Instalar o `Hugo` é um pouco mais complicado porque seu executável precisa estar em uma pasta definida nas suas variáveis de ambiente, então simplesmente joguei na pasta do GoLang:
-
-![Go](2021-12-21-00-55-59.png)
-
-Verifique se está tudo ok:
-
-![Hyper Command Line](2021-12-21-00-58-57.png)
-
-## 2° Passo: Criação dos repositórios
-
-Dividi o projeto em dois repositórios no GitHub: o back-end e o front-end.
-
-Back-end: `RafaelMFonseca/rafaelmfonseca.blog`
-
-Front-end: `RafaelMFonseca/rafaelmfonseca.github.io`
-
-
-Antes de tudo iniciei o repositório do back-end com CLI do hugo:
+- Ter uma conta no [GitHub](https://github.com/).
+- Instalar o Git.
+- Instalar o Hugo:
 
 ```
-$ hugo new site rafaelmfonseca.blog
-$ cd rafaelmfonseca.blog
-$ git init
-$ git submodule add https://github.com/nanxiaobei/hugo-paper themes/paper
-$ hugo server
-$ git submodule add -b main git@github.com:RafaelMFonseca/rafaelmfonseca.github.io public
+choco install hugo-extented -y
 ```
 
-![RafaelMFonseca/rafaelmfonseca.blog](2021-12-21-01-16-13.png)
+## 1° Passo: Criação do repositório no GitHub
 
-Observe que adicionei dois submódulos do git, o primeiro sendo o tema principal: `nanxiaobei/hugo-paper` (pasta themes), e segundo o módulo onde os arquivos compilados serão jogados: `RafaelMFonseca/rafaelmfonseca.github.io` (pasta public).
+Precisamos criar nossa branch que vai ser responsável por armazenar todos os arquivos do blog, incluindo os posts, páginas e o tema. Selecione **Public** na visibilidade do repositório, o GitHub Pages não permite publicar com a opção **Private**.
+
+<center><img src="2023-08-10-12-54-51.png" width="450" /></center>
+
+## 2° Passo: Criação do blog
+
+Agora conseguimos utilizar a CLI do Hugo para criar a estrutura do blog e acrescentar o submódulo `nanxiaobei/hugo-paper` na pasta themes.
+
+```
+hugo new site blog
+cd blog
+git init
+git submodule add https://github.com/nanxiaobei/hugo-paper themes/paper
+hugo server
+```
+
+- **Observação:** O tema `paper` é uma sugestão, pode ser qualquer outro, [veja aqui todos os temas disponíveis](https://themes.gohugo.io/) que a comunidade criou.
+
+<center><img src="2021-12-21-01-16-13.png" width="300" /></center>
 
 ## 3° Passo: Configuração do blog
 
-Abra o arquivo `config.toml` e altere as propriedades de acordo com o tema selecionado.
-Veja o meu de exemplo:
+Já que o repositorio se chama `blog`, isso significa que o GitHub Pages vai expor as páginas do website no endereço: `https://<nome_usuario>.github.io/blog`, portanto precisamos ajustar as configurações para que o Hugo entenda que a diretório raiz do website começa em `/blog`.
+Edite o arquivo `config.toml` e ajuste as propriedades:
 
 ```
-baseURL = 'https://rafaelmfonseca.github.io/'
+baseURL = 'https://<nome_usuario>.github.io/blog'
 languageCode = 'en-us'
-title = 'Rafael Moreira Fonseca'
+title = 'Nome'
 theme = 'paper'
 ```
 
-## 4° Passo: Breve resumo do Hugo CLI
-
-Provavalmente você não vai utilizar os comandos abaixo se configurar para realizar build automática pelo GitHub Actions, mas só por curiosidade:
-
-Para compilar o arquivos:
-```
-$ hugo
-```
-Para iniciar o servidor de dev:
-```
-$ hugo serve
-```
 
 ## 5° Passo: Build automática pelo GitHub Actions
 
-Vamos utilizar o GitHub Pages justamente para hospedar uma aplicação compilada com o `Hugo` e o GitHub Actions para automatizar sua build.
+Crie o arquivos `.github/workflows/hugo.yaml` no seu repositório local. Ele vai ser responsável por compilar os arquivos de nosso blog e publicar no GitHub Pages:
 
-O workflow vai ser mais ou menos isso:
-
-<b> Commit na branch `RafaelMFonseca/rafaelmfonseca.blog` => GitHub Actions => Branch `RafaelMFonseca/rafaelmfonseca.github.io` atualizada com os arquivos estáticos do blog</b>
-
-Crie em seu repositório do back-end o seguinte arquivo: `.github/workflows/main.yml` com o conteúdo:
 
 ```yaml
-name: CI
-on: push
+name: Deploy Hugo site to Pages
+
+on:
+  push:
+    branches:
+      - main
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Git checkout
-        uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v3
         with:
-            ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
-            persist-credentials: true
-            submodules: true
+          submodules: true
+          fetch-depth: 0
 
-      - name: Update theme
-        uses: snickerbockers/submodules-init@v4
-
-      - name: Setup hugo
+      - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
-            hugo-version: "0.85.0"
+          hugo-version: '0.110.0'
 
-      - name: Build
+      - name: Build Hugo
         run: hugo --minify
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
+        if: github.ref == 'refs/heads/main'
         with:
-            personal_token: ${{ secrets.TOKEN }}
-            external_repository: <nomeusuario>/<nomeusuario>.github.io
-            publish_dir: ./public
-            keep_files: false
-            user_name: <nomeusuario>
-            user_email: <emailvalido>
-            publish_branch: main
-            force_orphan: true
+          personal_token: ${{ secrets.GITHUB_TOKEN  }}
+          publish_dir: ./public
+
 ```
 
-## 6° Passo: Configurações de token
+- **Observação:** Vale notar que o secret **"GITHUB_TOKEN"** não é um Personal Access Token. O GitHub Actions cria esse secret automaticamente antes da Action ser executada, então você pode realizar o deploy sem se preocupar com isso.
 
-Note que no YAML estamos utilizando duas variáveis: SSH_PRIVATE_KEY e TOKEN.
+## 6° Passo: Configurando o GitHub Pages
 
-O TOKEN é gerado pelo link: https://github.com/settings/tokens/new
+No GitHub, navegue até as **configurações** de seu repositório e defina o diretório root e branch para o seu blog.
 
-![Access token](2021-12-21-01-20-45.png)
+<center><img src="2023-08-10-13-17-08.png" width="550" /></center>
 
-E para declarar essas variáveis adicionamos em: https://github.com/nomeusuario/seurepositorio/settings/secrets/actions
+## 7° Passo: Publicando o blog
 
-![Actions secret](2021-12-21-01-22-17.png)
+Agora basta commitar e enviar os arquivos do repositório para o GitHub. Com isso a Action será disparada automaticamente.
 
-O SSH_PRIVATE_KEY é sua chave SSH gerada para o GitHub.
+Você consegue visualizar o andamento do Workflow no menu **"Action"**:
 
-Com isso qualquer commit vai disparar o GitHub Actions e publicar seu blog no repositório de front-end.
+<center><img src="2023-08-10-13-23-16.png" width="550" /></center>
+
+## Opcional: Testando localmente
+
+Hugo CLI fornece alguns comandos úteis para conseguir visualizar e compilar o blog localmente, sem a necessidade de publicar os arquivos para o GitHub Pages.
+
+
+### Para compilar o arquivos:
+```
+$ hugo
+```
+
+### Para iniciar o servidor de desenvolvimento:
+```
+$ hugo serve
+```
+
+Tudo pronto!
+
+Agora você consegue acessar o seu blog através de um endereço na internet e tem a possibilidade de adicionar mais conteúdo para personalizar o blog.
+
+Apareceu alguma dúvida? Envie nos comentários abaixo.
