@@ -12,9 +12,8 @@ jobs:
       - name: 🚀 Git checkout
         uses: actions/checkout@v3
         with:
-          ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
-          persist-credentials: true
           submodules: true
+          fetch-depth: 0
 
       - name: 🔄 Update theme
         uses: snickerbockers/submodules-init@v4
@@ -22,19 +21,14 @@ jobs:
       - name: ⚙️ Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: '0.91.0'
+          hugo-version: '0.110.0'
 
       - name: 🏗️ Build with Hugo
         run: hugo --minify
 
-      - name: 📦 Setup Pages
+      - name: 📦 Deploy
         uses: peaceiris/actions-gh-pages@v3
+        if: github.ref == 'refs/heads/main'
         with:
-            personal_token: ${{ secrets.TOKEN }}
-            external_repository: RafaelMFonseca/rafaelmfonseca.github.io
-            publish_dir: ./public
-            keep_files: false
-            user_name: RafaelMFonseca
-            user_email: ramofojabuka@gmail.com
-            publish_branch: main
-            force_orphan: true
+          personal_token: ${{ secrets.GITHUB_TOKEN  }}
+          publish_dir: ./public
