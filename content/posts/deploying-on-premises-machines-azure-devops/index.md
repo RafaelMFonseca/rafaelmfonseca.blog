@@ -2,7 +2,6 @@
 title: "Azure DevOps: Guia passo a passo para configurar um Agent Self-Hosted no Windows"
 date: 2023-07-23T21:30:00-00:00
 comments: true
-draft: true
 tags:
   - Azure
   - Azure DevOps
