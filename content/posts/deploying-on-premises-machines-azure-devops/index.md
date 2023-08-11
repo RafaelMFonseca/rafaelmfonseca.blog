@@ -93,7 +93,7 @@ Add-Type -AssemblyName System.IO.Compression.FileSystem ; [System.IO.Compression
 
 Caso você não configurou o Agent para rodar como serviço, basta executar o arquivo `run.cmd` para iniciá-lo.
 
-```
+```ps1
 .\run.cmd
 ```
 
@@ -107,7 +107,7 @@ Agora que o Agent está pronto, precisaremos configurar a pipeline para utilizá
 No arquivo de definição da pipeline, altere a pool para "Default" e substitua "NOME_DO_SEU_AGENT" pelo nome do Agent que foi configurado. 
 
 **azure-pipelines.yml**
-```
+```yml
 trigger:
 - main
 

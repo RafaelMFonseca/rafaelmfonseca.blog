@@ -25,7 +25,7 @@ GitHub Pages é um serviço de hospedagem do [GitHub](https://github.com/) para 
 - Instalar o Git.
 - Instalar o Hugo:
 
-```
+```zsh
 choco install hugo-extented -y
 ```
 
@@ -39,7 +39,7 @@ Precisamos criar nossa branch que vai ser responsável por armazenar todos os ar
 
 Agora conseguimos utilizar a CLI do Hugo para criar a estrutura do blog e acrescentar o submódulo `nanxiaobei/hugo-paper` na pasta themes.
 
-```
+```zsh
 hugo new site blog
 cd blog
 git init
@@ -56,7 +56,7 @@ hugo server
 Já que o repositorio se chama `blog`, isso significa que o GitHub Pages vai expor as páginas do website no endereço: `https://<nome_usuario>.github.io/blog`, portanto precisamos ajustar as configurações para que o Hugo entenda que a diretório raiz do website começa em `/blog`.
 Edite o arquivo `config.toml` e ajuste as propriedades:
 
-```
+```toml
 baseURL = 'https://<nome_usuario>.github.io/blog'
 languageCode = 'en-us'
 title = 'Nome'
@@ -126,13 +126,13 @@ Hugo CLI fornece alguns comandos úteis para conseguir visualizar e compilar o b
 
 
 ### Para compilar o arquivos:
-```
-$ hugo
+```zsh
+hugo
 ```
 
 ### Para iniciar o servidor de desenvolvimento:
-```
-$ hugo serve
+```zsh
+hugo serve
 ```
 
 Tudo pronto!
